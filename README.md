@@ -1,7 +1,8 @@
 # Movie-Recommendation-Engine
 I made 3 Types of Recommendation Engine 
 
-# 1.Simple Recommemder System Model : In this model I used TMDB 5000 Movie dataset : https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata which contains movies.csv and credits.csv.
+# 1.Simple Recommemder System Model :
+In this model I used TMDB 5000 Movie dataset : https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata which contains movies.csv and credits.csv.
 
 IMPORTANT LIBRARIES USED :
 
