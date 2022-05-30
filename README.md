@@ -1,5 +1,6 @@
-# NOTE : 1. Run The Collaborative_Filtering(SVD and KNN) ipynb file on google collab only.
-       # 2. Please ignore the app.py file, web.py is the Final Web app
+# NOTE : 
+1. Run The Collaborative_Filtering(SVD and KNN) ipynb file on google collab only.
+2. Please ignore the app.py file, web.py is the Final Web app
        
 
 # Movie-Recommendation-Engine
@@ -41,7 +42,7 @@ Approaches used : 1. Preprocessing of data(duplicates, missing values, unnecessa
                   4. Optimizing using weighted average ratings
 In this model I first do preprocessing of dataset like finding duplicates, missing values and dropping the unnecessary columns, after that i cleaned the required columns for checking similarities between genres, cast, crew, keywords as it is a content based system. then I merged all this columns to make a final details columns and then convert it into the vectors of strings and then check the similarity scores between each movie and recommend movies with high similarity.
 
-# 3. Collaborative filtering : 
+# 3. Collaborative-filtering-based-Recommender Engine : 
 In this model I used movie_meta.csv dataset as it contains users with ratings. In this model I filtered the movies on the basis of no. of user ratings and minnimu no. of ratings required(threshold rating).
 
 Approches used : 1. Statistical Filtering
