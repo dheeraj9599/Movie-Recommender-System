@@ -1,5 +1,5 @@
 # NOTE : 1. Run The Collaborative_Filtering(SVD and KNN) ipynb file on google collab only.
-       2. Please ignore the app.py file, web.py is the Final Web app
+       # 2. Please ignore the app.py file, web.py is the Final Web app
        
 
 # Movie-Recommendation-Engine
