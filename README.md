@@ -1,7 +1,7 @@
 # NOTE : 
 1. Run The Collaborative_Filtering(SVD and KNN) ipynb file on google collab only.
-2. web.py is the Web app
-3. For Runnning Web App Run web.py file and the necessary libraries needed are :
+2. web.py is the Web app - To run it use New_data.pkl and matrix.pkl data
+3. Necessary libraries needed for running web.py :
    requests==2.27.1
    streamlit==1.9.1
    streamlit_lottie==0.0.3         
