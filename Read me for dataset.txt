@@ -1,5 +1,0 @@
-Dataset are taken from the github links
-
-movies - https://raw.githubusercontent.com/susanli2016/Machine-Learning-with-Python/master/movielens_data/movies.csv
-
-ratings - https://raw.githubusercontent.com/susanli2016/Machine-Learning-with-Python/master/movielens_data/ratings.csv
