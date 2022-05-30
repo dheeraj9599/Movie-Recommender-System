@@ -27,7 +27,7 @@ def fetch_poster(movie_id):
 
 
 
-def normal_recommendations(title):
+def normal_recommendations(title,n):
     
     # index of movie title
     idx = indices[title]
@@ -37,7 +37,7 @@ def normal_recommendations(title):
     # enumerate function holds the indixes while calculating similarity
     sim_scores = list(enumerate(Matrix[idx]))
     sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
-    sim_scores = sim_scores[1:11]
+    sim_scores = sim_scores[1:n+1]
     
     movie_indices = [i[0] for i in sim_scores]
     
@@ -49,7 +49,7 @@ def normal_recommendations(title):
 
 
 # optimized_recommendations function
-def optimized_recommendations(title):
+def optimized_recommendations(title, n):
     
     # index of movie title
     idx = indices[title]
@@ -59,7 +59,7 @@ def optimized_recommendations(title):
     # enumerate function holds the indixes while calculating similarity
     sim_scores = list(enumerate(Matrix[idx]))
     sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
-    sim_scores = sim_scores[1:11]
+    sim_scores = sim_scores[1:n+1]
     
     movie_indices = [i[0] for i in sim_scores]
     
@@ -67,7 +67,7 @@ def optimized_recommendations(title):
     movie_req = Final_Movies_list.iloc[movie_indices][['id', 'title', 'genres', 'cast','overview', 'weigh_avg_rating','year']]
     
     
-    result = movie_req.sort_values('weigh_avg_rating', ascending=False).head(10)
+    result = movie_req.sort_values('weigh_avg_rating', ascending=False).head(n)
     
     return result
 # # # # # # # # # # # end of the functions # # # # # # # # # #  # # #
@@ -89,7 +89,7 @@ Title_list = Final_Movies_list['title'].values
 indices = pd.Series(Final_Movies_list.index, index = Final_Movies_list['title'])
 
 #Stoting Top-rated movies 
-Top_rated_movies = Final_Movies_list.sort_values('weigh_avg_rating', ascending=False).head(10)
+Top_rated_movies = Final_Movies_list.sort_values('weigh_avg_rating', ascending=False).head(50)
 
 
 
@@ -119,22 +119,57 @@ with st.container():
 
     with r_col:
         st_lottie(hey, height=300, key="Hello")    
-
+st.write("---")
 
 if __name__ == '__main__':
 
     st.header('Movie Recommender System') 
-    Str = ['--Select--', 'On the Basis of similar Movies', 'On the Basis of similar Movies but with good ratings','Recommend Top Rated Movies']   
-    app_options = st.selectbox('How May you want the Recommendations:', Str)
+    Str = ['--------Select--------', 'Recommend similar Movies', 'Recommend similar Movies with high ratings','Recommend Top Rated Movies']   
+    Str_options = st.selectbox('How may I recommend movies to you ?', Str)
 
     # recommending movies according to normal_recommendaion function
 
-    if app_options == Str[1]:
+    if Str_options == Str[1]:
         movie_selected = st.selectbox('Please Select a Movie', Title_list)
-        movie_count = st.slider("Select the Frequency",1,10,3)
+        movie_count = st.slider("Select the Frequency",1,25,5)
         if st.button('Click here To Recommend'): 
-            st.write("Hope You also like these movies")
-            result = normal_recommendations(movie_selected)
+
+            movie = Final_Movies_list[Final_Movies_list['title'] == movie_selected]
+
+            st.subheader("You Selected This Movie")
+            with st.container():
+                index = movie.index[0]
+                col1, col2, col3, col4 = st.columns(4)
+                with col1:
+                    st.subheader("[TITLE]")
+                with col2:
+                    st.subheader("[GENRE]")
+                with col3:
+                    st.subheader("[CAST]")
+
+                with col4:
+                    st.subheader("[OVERVIEW]")    
+
+            with st.container():    
+                with col1:
+                    st.image(fetch_poster(movie['id'][index]), width = 150, caption = movie['title'][index])
+                
+                with col2:
+                    st.write(movie['genres'][index])
+
+                with col3:
+                    st.write(movie['cast'][index])    
+
+                with col4:
+                    st.write(movie['overview'][index])        
+            st.write("---")    
+
+
+
+            st.subheader("Here are the Recommendations For you")
+            st.subheader("Hope You like these movies")
+
+            result = normal_recommendations(movie_selected, movie_count)
             with st.container():
                 col1, col2, col3, col4 = st.columns(4)
                 with col1:
@@ -179,12 +214,43 @@ if __name__ == '__main__':
 
     # recommending movies according to optimized_recommendaion function
                    
-    elif app_options == Str[2]:
+    elif Str_options == Str[2]:
         movie_selected = st.selectbox('Please Select a Movie', Title_list)
-        movie_count = st.slider("Select the Frequency",1,10,3)
+        movie_count = st.slider("Select the Frequency",1,25,5)
         if st.button('Click here To Recommend'): 
+
+            movie = Final_Movies_list[Final_Movies_list['title'] == movie_selected]
+
+            st.subheader("You Selected This Movie")
+            with st.container():
+                index = movie.index[0]
+                col1, col2, col3, col4 = st.columns(4)
+                with col1:
+                    st.subheader("[TITLE]")
+                with col2:
+                    st.subheader("[GENRE]")
+                with col3:
+                    st.subheader("[CAST]")
+
+                with col4:
+                    st.subheader("[OVERVIEW]")    
+
+            with st.container():    
+                with col1:
+                    st.image(fetch_poster(movie['id'][index]), width = 150, caption = movie['title'][index])
+                
+                with col2:
+                    st.write(movie['genres'][index])
+
+                with col3:
+                    st.write(movie['cast'][index])    
+
+                with col4:
+                    st.write(movie['overview'][index])        
+            st.write("---")
+
             st.write("Hope You also like these movies")
-            result = optimized_recommendations(movie_selected)
+            result = optimized_recommendations(movie_selected,movie_count)
             with st.container():
                 col1, col2, col3, col4 = st.columns(4)
                 with col1:
@@ -227,10 +293,11 @@ if __name__ == '__main__':
                         st.write(ovw_List[i])        
                     i += 1
     # recommending Top rated Movies
-    elif app_options == Str[3]:
-        movie_count = st.slider("Select the Frequency",1,10,3)
+    elif Str_options == Str[3]:
+        movie_count = st.slider("Select the Frequency",1,50,10)
         if st.button('Click here To Recommend'): 
-            st.write("Hope You also like these movies")
+            st.subheader("Here are the Recommendations For you")
+            st.subheader("Hope You like these movies")
             result = Top_rated_movies
             with st.container():
                 col1, col2, col3, col4 = st.columns(4)
