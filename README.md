@@ -1,7 +1,10 @@
 # NOTE : 
 1. Run The Collaborative_Filtering(SVD and KNN) ipynb file on google collab only.
 2. Please ignore the app.py file, web.py is the Final Web app
-       
+3. For Runnning Web App Run web.py file and the necessary libraries needed are :
+   requests==2.27.1
+   streamlit==1.9.1
+   streamlit_lottie==0.0.3         
 
 # Movie-Recommendation-Engine
 I made 3 Types of Recommendation Engine 
