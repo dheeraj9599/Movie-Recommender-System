@@ -88,3 +88,15 @@ Datasets :- https://raw.githubusercontent.com/susanli2016/Machine-Learning-with-
             https://raw.githubusercontent.com/susanli2016/Machine-Learning-with-Python/master/movielens_data/movies.csv
 
 NOTE : Run The Collaborative_Filtering(SVD and KNN) ipynb file on google collab.             
+
+
+Web App Images:
+
+![Screenshot (282)](https://user-images.githubusercontent.com/92773853/171160121-736a2fde-000d-4ebe-a0ae-3b1c087f5828.png)
+
+![Screenshot (283)](https://user-images.githubusercontent.com/92773853/171160227-60169e11-6ba7-49f4-8300-5cb98e23534d.png)
+![Screenshot (287)](https://user-images.githubusercontent.com/92773853/171160312-d75fd4ab-f0ff-45e9-80ba-92b6b688cb9b.png)
+
+![Screenshot (288)](https://user-images.githubusercontent.com/92773853/171160344-74d74e2d-2337-4a6a-902d-73ff3e20b98a.png)
+
+
