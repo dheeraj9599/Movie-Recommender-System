@@ -16,9 +16,15 @@ def fetch_poster(movie_id):
 
     url = "https://api.themoviedb.org/3/movie/{}?api_key=4125b44e30d3b8c21db8d9bfaceddbfe&language=en-US".format(movie_id)
     data = requests.get(url)
+    
+    # handling the response 404 error
+    if data.status_code == 404:       
+        return "https://th.bing.com/th/id/R.e5e0354514c70fd464177625d85ad530?rik=2cpvKOckFETaUA&riu=http%3a%2f%2fdrpp-ny.org%2fwp-content%2fuploads%2f2014%2f07%2fsorry-image-not-available.png&ehk=Vr%2brN9GaGUkGM2yuKpT1w2pQfZ16Wq3tpZf3hCvrBbg%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1"
+
     data = data.json()
     poster_path = data['poster_path'] 
-
+    
+    # if poster is not available for the movie
     if poster_path == None :
         return "https://th.bing.com/th/id/R.e5e0354514c70fd464177625d85ad530?rik=2cpvKOckFETaUA&riu=http%3a%2f%2fdrpp-ny.org%2fwp-content%2fuploads%2f2014%2f07%2fsorry-image-not-available.png&ehk=Vr%2brN9GaGUkGM2yuKpT1w2pQfZ16Wq3tpZf3hCvrBbg%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1"
     
