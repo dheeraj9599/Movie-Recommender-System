@@ -133,7 +133,7 @@ st.write("---")
 if __name__ == '__main__':
 
     st.header('Movie Recommender System') 
-    Str = ['--------Select--------', 'Recommend similar Movies', 'Recommend similar Movies with high ratings','Recommend Top Rated Movies']   
+    Str = ['--------Select--------', 'Recommend similar Movies', 'Recommend similar Movies on the basis of user ratings','Recommend Top Rated Movies']   
     Str_options = st.selectbox('How may I recommend movies to you ?', Str)
 
     # recommending movies according to normal_recommendaion function
