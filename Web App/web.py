@@ -14,7 +14,7 @@ import streamlit as st
 # from here I am fetching the posters
 def fetch_poster(movie_id):
 
-    url = "https://api.themoviedb.org/3/movie/{}?api_key=4125b44e30d3b8c21db8d9bfaceddbfe&language=en-US".format(movie_id)
+    url = "https://api.themoviedb.org/3/movie/{}?api_key='YOUR_API_KEY'".format(movie_id)
     data = requests.get(url)
     
     # handling the response 404 error
